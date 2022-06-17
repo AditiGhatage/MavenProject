@@ -9,7 +9,7 @@ public class Pojo
 	private String baseURL;
 	private int implicitWait=0;
 	private Utilities objUtilities;
-	private SeleniumWrapper objSeleniumWrapper;
+	private SeleniumWrapperFunction objSeleniumWrapper;
 
 	public WebDriver getDriver() {
 		return driver;
@@ -35,10 +35,10 @@ public class Pojo
 	public void setObjUtilities(Utilities objUtilities) {
 		this.objUtilities = objUtilities;
 	}
-	public SeleniumWrapper getObjSeleniumWrapper() {
+	public SeleniumWrapperFunction getObjSeleniumWrapper() {
 		return objSeleniumWrapper;
 	}
-	public void setObjSeleniumWrapper(SeleniumWrapper objSeleniumWrapper) {
+	public void setObjSeleniumWrapper(SeleniumWrapperFunction objSeleniumWrapper) {
 		this.objSeleniumWrapper = objSeleniumWrapper;
 	}
 

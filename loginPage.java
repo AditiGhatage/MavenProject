@@ -29,8 +29,8 @@ public class loginPage {
 	}
 
 	public void clickGetStarted() {
-		objPojo.getDriver().findElement(loc_btnGetStarted).click();
-		//Assert.assertTrue(objPojo.getObjSeleniumWrapper().setText(loc_btnGetStarted, null));
+		//objPojo.getDriver().findElement(loc_btnGetStarted).click();
+		Assert.assertTrue(objPojo.getObjSeleniumWrapper().getText(loc_btnGetStarted));
 	}
 	
 	public void getRandomMobile()

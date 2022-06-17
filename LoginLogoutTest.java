@@ -1,8 +1,8 @@
 package com.scripts;
 
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
 
 import com.PageFactory.HomePage;
 import com.PageFactory.loginPage;
@@ -13,13 +13,13 @@ public class LoginLogoutTest extends BaseTest
 {
 	private LoginLogoutFlow objLoginLogoutFlow;
 	private HomePage objHomePage;
-
-
+	
 	public void initializeWebPage() 
 	{
 		new loginPage(this);
 		objLoginLogoutFlow = new LoginLogoutFlow(this);
 		objHomePage = new HomePage(this);
+		
 	}
 
 	@BeforeClass
@@ -30,19 +30,24 @@ public class LoginLogoutTest extends BaseTest
 
 	@AfterClass
 	public void tearDownEnv() {
-		this.tearDown();
+		//this.tearDown();
 	}
 	
-	@Test
+	@Test(priority = 1, groups="functional")
 	public void TC_01_verifyLogin()
 	{
 		objLoginLogoutFlow.doLogin();
-		objLoginLogoutFlow.getmobile();
+		//objLoginLogoutFlow.getmobile();
+	}
+	
+	@Test(priority = 2, groups="functional")
+	public void TC_02_verifyLogOut() {
+		objLoginLogoutFlow.doLogin();
+		this.waitFor(2);
+		objHomePage.clickOnUserImage();
+		objHomePage.clickOnLogOffLink();
+		objHomePage.clickYesOnConfirmLogOffWindow();
+	
 	}
 
-	@Test
-	public void TC_02_verifyHomePageDisplay() 
-	{
-		objHomePage.verfiyHomeTextDisplayed();
-	}
 }

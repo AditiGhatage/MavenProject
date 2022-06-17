@@ -38,4 +38,9 @@ public class LoginLogoutFlow
 		objLoginPage.getRandomMobile();
 	}
 
+	public void verifySuccessfulLogOffUrl() {
+		String strExpectedUrl = "https://ebs4-qa2.simplifyhealthcare.com/Account/LogOff";
+		Assert.assertEquals(strExpectedUrl, this.getCurrentPageUrl());
+	}
+
 }

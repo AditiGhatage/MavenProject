@@ -36,6 +36,18 @@ public class Utilities extends Pojo
 		return stremail;
 	}
 	
+	public String getRandomNumber(int intLength) {
+
+		String allowChars="0123456789";
+		String randomString="";
+
+		for(int intIndex=0; intIndex<intLength;intIndex++) {
+		int intNum= (int) Math.floor(Math.random()*allowChars.length());
+		randomString+=allowChars.substring(intNum, intNum+1);
+		}
+		return randomString;
+		}
+	
 	public String getRandomMobile(int intLength)
     {
     	String allowChars="0123456789";

@@ -1,5 +1,9 @@
 package com.generic;
 
+import org.testng.annotations.AfterMethod;
+
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -8,9 +12,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class BaseTest extends Pojo 
 {
 
-	private WebDriver driver;
+	public static WebDriver driver;
 	private String strBaseURL;
-	private SeleniumWrapper objSeleniumWrapper;
+	private SeleniumWrapperFunction objSeleniumWrapper;
 	
 	public void intializationWebEnv() {
 		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"/src/main/resources/Drivers/chromedriver.exe");
@@ -21,11 +25,12 @@ public class BaseTest extends Pojo
 		this.setDriver(driver);
 		setObjUtilities(new Utilities());
 		this.setObjUtilities(getObjUtilities());
-		objSeleniumWrapper = new SeleniumWrapper(this);
+		objSeleniumWrapper = new SeleniumWrapperFunction(this);
 		this.setObjSeleniumWrapper(objSeleniumWrapper);
 		driver.manage().window().maximize();
 	}
 
+	@AfterMethod
 	public void tearDown() {
 		driver.quit();
 	}
@@ -35,7 +40,18 @@ public class BaseTest extends Pojo
 	}
 
 	public void setDriver(WebDriver driver) {
-		this.driver = driver;
+		BaseTest.driver = driver;
+	}
+	
+	public void waitFor(int timeUnitinsecond)
+	{
+		try {
+			Thread.sleep(TimeUnit.MILLISECONDS.convert(timeUnitinsecond,TimeUnit.SECONDS));
+			
+		} catch (Exception exception) {
+			System.out.println("Error Message " +exception.getMessage());
+		}
+		
 	}
 
 
